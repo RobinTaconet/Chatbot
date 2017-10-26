@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
   
 });
 
-router.post('/webhook', function (req, res) {
+router.post('/', function (req, res) {
   var data = req.body;
 
   // Make sure this is a page subscription
@@ -44,7 +44,7 @@ router.post('/webhook', function (req, res) {
 function receivedMessage(event) {
   // Putting a stub for now, we'll expand it in the following steps
   console.log("Message data: ", event.message);
-  sendTextMessage.chatService(event.sender.id, event.message.text);
+  chatService.sendTextMessage(event.sender.id, event.message.text);
 }
 
 module.exports = router;
